@@ -21,7 +21,17 @@
                 hilft bei der Einkaufsliste und verbindet Sie mit einer kochbegeisterten Community. 
                 Jetzt kostenlos registrieren und loslegen!
             </p>
+
+            {% if user.is_authenticated %}
+
+            <a class="btn btn-success light-green-btn mt-4 fs-5" href="#">Jetzt Generieren</a>
+
+            {% else %}
+
             <a class="btn btn-success light-green-btn mt-4 fs-5" href="{% url 'signup' %}">Jetzt Registrieren</a>
+
+            {% endif %}
+
         </div>
       </div>
     </div>

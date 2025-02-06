@@ -91,6 +91,12 @@
     --bs-btn-hover-border-color: #7ab060 !important;
 }
 
+.light-green-btn:active {
+    --bs-btn-active-color: black !important;
+    --bs-btn-active-bg: #689652 !important;
+    --bs-btn-active-border-color: #689652 !important;
+}
+
 .light-green {
     color: #9ee37d;
 }
