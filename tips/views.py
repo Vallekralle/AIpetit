@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from django.views.generic import ListView
 
-# Create your views here.
+
+from .models import *
+
+
+class TipListView(ListView):
+    model = Tip
+    template_name = "tips/tips.html"
