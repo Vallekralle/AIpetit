@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}<link rel="stylesheet" href="{% static 'css/index.css' %}">{% endblock css %}
+
+{% block title %}AIpetit - Home{% endblock title%}
+
+{% block content %}
+
+<div class="video-background-holder">
+    <div class="video-background-overlay"></div>
+    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+          <source src="{% static 'video/kochvideo.mp4' %}" type="video/mp4">
+      </video>
+    <div class="video-background-content container h-100">
+      <div class="d-flex h-100 text-center align-items-center">
+        <div class="w-100 text-white">
+            <h1 class="display-4 light-green">Keine Idee fürs Kochen? AIpetit inspiriert Sie mit leckeren Rezepten!</h1>
+            <p class="lead mb-0 fs-5">
+                Nutzen Sie, was Sie zu Hause haben – AIpetit schlägt Ihnen passende Rezepte vor, 
+                hilft bei der Einkaufsliste und verbindet Sie mit einer kochbegeisterten Community. 
+                Jetzt kostenlos registrieren und loslegen!
+            </p>
+            <a class="btn btn-success light-green-btn mt-4 fs-5" href="{% url 'signup' %}">Jetzt Registrieren</a>
+        </div>
+      </div>
+    </div>
+</div>
+
+{% endblock content %}
