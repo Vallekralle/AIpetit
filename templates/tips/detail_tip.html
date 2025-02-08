@@ -12,8 +12,14 @@
     <small class="text-body-secondary">@{{ tip.user.username }} &middot; {{ tip.created_at }}</small>
     <hr>
     <div class="clearfix">
-        <img class="rounded img-fluid col-md-6 float-md-end mb-3 ms-md-3 hidden-right" 
-        src="{{ tip.img.url }}" alt="{{ tip.title }}">
+
+        {% if tip.img.url is not None %}
+
+            <img class="rounded img-fluid col-md-6 float-md-end mb-3 ms-md-3 hidden-right" 
+            src="{{ tip.img.url }}" alt="{{ tip.title }}">
+
+        {% endif %}
+
         <p class="fs-5 barlow-500 hidden-middle">
             {{ tip.body|safe|linebreaksbr }}
         </p>

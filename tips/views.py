@@ -14,7 +14,7 @@ from .forms import CommentForm
 class TipListView(LoginRequiredMixin, ListView):
     model = Tip
     template_name = "tips/tip_list.html"
-    paginate_by = 10
+    paginate_by = 5
 
 
 class CreateTipView(LoginRequiredMixin, CreateView):
@@ -40,7 +40,7 @@ class CommentGet(DetailView):
 class CommentPost(SingleObjectMixin, FormView):
     model = Tip
     form_class = CommentForm
-    template_name = "tips/tip_detail.html"
+    template_name = "tips/detail_tip.html"
 
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
@@ -72,7 +72,7 @@ class DetailTipView(LoginRequiredMixin, View):
 class UpdateTipView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Tip
     template_name = "tips/update_tip.html"
-    fields = ("title", "body",)
+    fields = ("title", "body", "img",)
     success_url = reverse_lazy("tip_list")
 
     def test_func(self):

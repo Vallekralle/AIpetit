@@ -10,7 +10,7 @@ class Tip(models.Model):
     )
     title = models.CharField(blank=False, null=False, max_length=200)
     body = models.TextField(blank=False, null=False)
-    img = models.ImageField(upload_to="uploads/", null=True, blank=True)
+    img = models.ImageField(upload_to="uploads/", null=True, blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
     likes = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="like_posts")
 
@@ -18,7 +18,7 @@ class Tip(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse("tip_detail", kwargs={"pk": self.pk})
+        return reverse("detail_tip", kwargs={"pk": self.pk})
     
     class Meta:
         ordering = ["created_at"]
