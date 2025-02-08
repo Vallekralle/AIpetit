@@ -10,9 +10,9 @@ class Tip(models.Model):
     )
     title = models.CharField(blank=False, null=False, max_length=200)
     body = models.TextField(blank=False, null=False)
-    likes = models.PositiveIntegerField(default=0)
     img = models.ImageField(upload_to="uploads/", null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    likes = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="like_posts")
 
     def __str__(self):
         return self.title
@@ -21,7 +21,7 @@ class Tip(models.Model):
         return reverse("tip_detail", kwargs={"pk": self.pk})
     
     class Meta:
-        ordering = ["likes"]
+        ordering = ["created_at"]
 
 
 class Comment(models.Model):
@@ -34,8 +34,8 @@ class Comment(models.Model):
         on_delete=models.CASCADE
     )
     body = models.TextField(blank=False, null=False)
-    likes = models.PositiveBigIntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
+    likes = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="like_comments")
 
     def __str__(self):
         return self.body
@@ -43,6 +43,5 @@ class Comment(models.Model):
     def get_absolute_url(self):
         return reverse("tip_list")
     
-    
     class Meta:
-        ordering = ["likes"]
+        ordering = ["created_at"]

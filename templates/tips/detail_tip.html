@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags%}
+
+{% block css %}{% endblock css %}
+
+{% block title %}AIpetit - {{ tip.user.username }}'s Tipp{% endblock title %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <h2>{{ tip.title }}</h2>
+    <small class="text-body-secondary">@{{ tip.user.username }} &middot; {{ tip.created_at }}</small>
+    <hr>
+    <div class="clearfix">
+        <img class="rounded img-fluid col-md-6 float-md-end mb-3 ms-md-3 hidden-right" 
+        src="{{ tip.img.url }}" alt="{{ tip.title }}">
+        <p class="fs-5 barlow-500 hidden-middle">
+            {{ tip.body|safe|linebreaksbr }}
+        </p>
+        {% if tip.user != user %}
+            <form action="{% url 'like_post' tip.pk %}" method="post">
+                {% csrf_token %}
+
+                {% if user in tip.likes.all %}
+
+                    Zum entfernen des Likes klicken Sie bitte auf
+
+                {% else %}
+
+                    Hat Ihnen dieser Tipp gefallen?<br>
+                    Dann hinterlassen Sie gerne einen
+
+                {% endif %}
+
+                <button type="submit" name="tip_id" value="{{ tip.id }}" class="btn btn-success">
+                    {{ tip.likes.all|length }}
+                    {% if user in tip.likes.all %} 
+                    <i class="bi bi-hand-thumbs-up-fill"></i> 
+                    {% else %}
+                    <i class="bi bi-hand-thumbs-up"></i> 
+                    {% endif %}
+                </button>
+            </form>
+        {% endif %}
+    </div>
+    <hr>
+    <h4>Kommentare ({{ tip.comment_set.all|length }})</h4>
+
+    {% if tip.comment_set.all|length == 0 %}
+
+        <h5>Es gibt noch keine Kommentare zu diesem Tipp</h5>
+
+    {% else %}
+
+        {% for comment in tip.comment_set.all %}
+
+            <div class="card mb-1">
+                <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-body-secondary">@{{ comment.user }} &middot; {{ comment.created_at }}</h6>
+                <p class="card-text">{{ comment.body }}</p>
+
+                {% if user != comment.user %}
+
+                    <form action="{% url 'like_comment' comment.pk %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" name="comment_id" value="{{ comment.id }}" class="btn btn-success">
+                            {{ comment.likes.all|length }}
+                            {% if user in comment.likes.all %}
+    
+                            <i class="bi bi-hand-thumbs-up-fill"></i> 
+    
+                            {% else %}
+    
+                            <i class="bi bi-hand-thumbs-up"></i> 
+    
+                            {% endif %}
+                        </button>
+                    </form>
+                
+                {% endif %}
+
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+    <br>
+    <h4>Kommentieren</h4>
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button class="btn btn-primary">Veröffentlichen</button>
+    </form>
+</div>
+
+{% endblock content %}

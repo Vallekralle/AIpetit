@@ -9,4 +9,6 @@ urlpatterns = [
     path("<int:pk>/", DetailTipView.as_view(), name="detail_tip"),
     path("<int:pk>/bearbeiten/", UpdateTipView.as_view(), name="edit_tip"),
     path("<int:pk>/löschen/", DeleteTipView.as_view(), name="delete_tip"),
+    path("like/<int:pk>", LikeTipView, name="like_post"),
+    path("like/comment/<int:pk>", LikeCommentView, name="like_comment")
 ]

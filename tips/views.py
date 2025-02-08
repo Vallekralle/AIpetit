@@ -1,3 +1,5 @@
+from django.shortcuts import get_object_or_404
+from django.http import HttpResponseRedirect
 from django.views import View
 from django.views.generic import ListView, DetailView, FormView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -27,7 +29,7 @@ class CreateTipView(LoginRequiredMixin, CreateView):
 
 class CommentGet(DetailView):
     model = Tip
-    template_name = "tips/tip_detail.html"
+    template_name = "tips/detail_tip.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -69,7 +71,7 @@ class DetailTipView(LoginRequiredMixin, View):
 
 class UpdateTipView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Tip
-    template_name = "tips/tip_update.html"
+    template_name = "tips/update_tip.html"
     fields = ("title", "body",)
     success_url = reverse_lazy("tip_list")
 
@@ -80,9 +82,29 @@ class UpdateTipView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class DeleteTipView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Tip
-    template_name = "tips/tip_delete.html"
+    template_name = "tips/delete_tip.html"
     success_url = reverse_lazy("tip_list")
 
     def test_func(self):
         obj = self.get_object()
         return obj.user == self.request.user
+
+
+def LikeTipView(request, pk):
+    post = get_object_or_404(Tip, id=request.POST.get("tip_id"))
+    if post.likes.filter(id=request.user.id).exists():
+        post.likes.remove(request.user)
+    else:
+        post.likes.add(request.user)
+
+    return HttpResponseRedirect(reverse("detail_tip", args=[str(pk)]))
+
+
+def LikeCommentView(request, pk):
+    post = get_object_or_404(Comment, id=request.POST.get("comment_id"))
+    if post.likes.filter(id=request.user.id).exists():
+        post.likes.remove(request.user)
+    else:
+        post.likes.add(request.user)
+
+    return HttpResponseRedirect(reverse("detail_tip", args=[str(pk)]))
