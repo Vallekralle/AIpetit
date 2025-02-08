@@ -1,0 +1,102 @@
+/* Breakpoints for video height */
+
+@media only screen and (max-width: 600px) {
+    .video-background-holder {
+        height: calc(100vh - 56px);
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .video-background-holder {
+        height: calc(100vh - 56px);
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .video-background-holder {
+        height: calc(100vh - 56px);
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .video-background-holder {
+        height: calc(100vh - 86px);
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .video-background-holder {
+        height: calc(100vh - 97px);
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+    .video-background-holder {
+        height: calc(100vh - 108px);
+    }
+}
+
+/* Video CSS */
+
+.video-background-holder {
+    position: relative;
+    background-color: black;
+    min-height: 25rem;
+    width: 100%;
+    overflow: hidden;
+}
+  
+.video-background-holder video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 0;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+}
+  
+.video-background-content {
+    position: relative;
+    z-index: 2;
+}
+  
+.video-background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: 0.5;
+    z-index: 1;
+}
+
+/* Custom button */
+
+.light-green-btn {
+    --bs-btn-color: black !important;
+    --bs-btn-bg: #9ee37d !important;
+    --bs-btn-border-color: #9ee37d !important;
+}
+
+.light-green-btn:hover {
+    --bs-btn-hover-color: black !important;
+    --bs-btn-hover-bg: #7ab060 !important;
+    --bs-btn-hover-border-color: #7ab060 !important;
+}
+
+.light-green-btn:active {
+    --bs-btn-active-color: black !important;
+    --bs-btn-active-bg: #689652 !important;
+    --bs-btn-active-border-color: #689652 !important;
+}
+
+.light-green {
+    color: #9ee37d;
+}

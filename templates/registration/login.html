@@ -5,12 +5,14 @@
 
 {% block content %}
 
-<div class="container">
-    <h2 class="text-center mt-5">Anmelden</h2>
+<div class="container d-flex flex-grow-1 flex-column justify-content-center">
+    <h2 class="text-center">&middot; Anmelden &middot;</h2>
     <form method="post">
         {% csrf_token %}
         {{ form|crispy }}
-        <button class="btn btn-primary" type="submit">Anmelden</button>
+        <div class="text-center">
+            <button class="btn btn-primary" type="submit">Anmelden</button>
+        </div>
     </form>
 </div>
 
