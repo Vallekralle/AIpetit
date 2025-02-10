@@ -46,10 +46,12 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
     'storages',
+    'openai',
     # Local
     'accounts.apps.AccountsConfig',
     'pages.apps.PagesConfig',
     'tips.apps.TipsConfig',
+    'recipes.apps.RecipesConfig',
 ]
 
 MIDDLEWARE = [
@@ -166,3 +168,5 @@ LOGOUT_REDIRECT_URL = "index"
 # Defining packs for crispy
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+AI_ML_API_KEY = env.str("AI_ML_API_KEY")

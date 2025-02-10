@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block css %}{% endblock css %}
+
+{% block title %}AIpetit - Rezept generieren{% endblock title %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <h2>Rezept Generieren</h2>
+    
+    {% if output %}
+        <div class="alert alert-success">
+            <h4>Generiertes Rezept:</h4>
+            <p>{{ output|safe|linebreaksbr }}</p>
+        </div>
+    
+    {% else %}
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button class="btn btn-success">Generieren</button>
+        </form>
+        
+    {% endif %}
+</div>
+
+{% endblock content %}

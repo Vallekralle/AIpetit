@@ -24,7 +24,7 @@
 
             {% if user.is_authenticated %}
 
-            <a class="btn btn-success light-green-btn mt-4 fs-5" href="#">Jetzt Generieren</a>
+            <a class="btn btn-success light-green-btn mt-4 fs-5" href="{% url 'generate_recipe' %}">Jetzt Generieren</a>
 
             {% else %}
 

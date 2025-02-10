@@ -11,4 +11,5 @@ urlpatterns = [
     path("impressum/", ImprintView.as_view(), name="imprint"),
     path("kontakt/", ContactView.as_view(), name="contact"),
     path("tipps/", include("tips.urls")),
+    path("rezepte/", include("recipes.urls")),
 ]
