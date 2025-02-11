@@ -3,6 +3,8 @@
 
 {% block css %}{% endblock css %}
 
+{% block generate_recipe %}active" style="pointer-events: none;" aria-current="page{% endblock generate_recipe %}
+
 {% block title %}AIpetit - Rezept generieren{% endblock title %}
 
 {% block content %}
@@ -10,11 +12,31 @@
 <div class="container mt-5">
     <h2>Rezept Generieren</h2>
     
+    <p class="fs-5">
+        Gib deine gewünschten Produkte und das Gericht in das Eingabefeld ein. 
+        Falls du besondere Wünsche hast – wie vegetarisch, vegan, Suppe oder ein 
+        festes Gericht – füge diese als Personalisierung hinzu. Klicke dann auf 
+        „Generieren“, und wir erstellen dein individuelles Rezept! 🍽️🚀
+    </p>
+
     {% if output %}
+
         <div class="alert alert-success">
             <h4>Generiertes Rezept:</h4>
             <p>{{ output|safe|linebreaksbr }}</p>
         </div>
+        <form action="{% url 'save_recipe' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" name="text" value="{{ output }}" class="btn btn-success">
+                <i class="bi bi-box-arrow-down"></i> Speichern
+            </button>
+            <a class="btn btn-warning" onclick="location.reload();" href="#">
+                <i class="bi bi-arrow-repeat"></i> Nochmal generieren
+            </a>
+            <a class="btn btn-danger" href="{% url 'generate_recipe' %}">
+                <i class="bi bi-x-lg"></i> Löschen
+            </a>
+        </form>
     
     {% else %}
 

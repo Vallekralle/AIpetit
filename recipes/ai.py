@@ -16,11 +16,11 @@ class GeneriereRezept():
 
     def response(self) -> str:
         response = self.client.chat.completions.create(
-            model="gpt-4o",
+            model="gpt-4o-mini",
             messages=[
                 {
                     "role": "system",
-                    "content": """Generate a recipe based on the user's input""",
+                    "content": """Generate a recipe based on the user's input, 1610 characters max""",
                 },
                 {
                     "role": "user",

@@ -43,10 +43,10 @@
             </a>
             <ul class="navbar-nav col-lg-6 justify-content-lg-center">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
+                <a class="nav-link {% block home %}{% endblock home %}" href="{% url 'index' %}">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'learn_more' %}">Mehr Erfahren</a>
+                <a class="nav-link {% block learn_more %}{% endblock learn_more %}" href="{% url 'learn_more' %}">Mehr Erfahren</a>
               </li>
 
               {% if user.is_authenticated %}
@@ -54,19 +54,19 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Rezepte</a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="{% url 'generate_recipe' %}">Generieren +</a></li>
-                  <li><a class="dropdown-item" href="#">Meine Rezepte</a></li>
+                  <li><a class="dropdown-item {% block generate_recipe %}{% endblock generate_recipe %}" href="{% url 'generate_recipe' %}">Generieren +</a></li>
+                  <li><a class="dropdown-item {% block my_recipe %}{% endblock my_recipe %}" href="{% url 'my_recipe' %}">Meine Rezepte</a></li>
                 </ul>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Einkaufsliste</a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Erstellen +</a></li>
-                  <li><a class="dropdown-item" href="#">Meine Einkaufsliste</a></li>
+                  <li><a class="dropdown-item {% block create_shooping_list %}{% endblock create_shooping_list %}" href="#">Erstellen +</a></li>
+                  <li><a class="dropdown-item {% block my_shopping_list %}{% endblock my_shopping_list %}" href="#">Meine Einkaufsliste</a></li>
                 </ul>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'tip_list' %}">Tipps</a>
+                <a class="nav-link {% block tips %}{% endblock tips %}" href="{% url 'tip_list' %}">Tipps</a>
               </li>
             </ul>
 
@@ -109,10 +109,10 @@
           </a>
       
           <ul class="nav col-md-4 justify-content-end">
-            <li class="nav-item"><a href="{% url 'about_us' %}" class="nav-link px-2 text-body-secondary">Über uns</a></li>
-            <li class="nav-item"><a href="{% url 'data_protection' %}" class="nav-link px-2 text-body-secondary">AGB & Datenschutz</a></li>
-            <li class="nav-item"><a href="{% url 'imprint' %}" class="nav-link px-2 text-body-secondary">Impressum</a></li>
-            <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link px-2 text-body-secondary">Kontakt</a></li>
+            <li class="nav-item {% block about_us %}{% endblock about_us %}"><a href="{% url 'about_us' %}" class="nav-link px-2 text-body-secondary">Über uns</a></li>
+            <li class="nav-item {% block data_protection %}{% endblock data_protection %}"><a href="{% url 'data_protection' %}" class="nav-link px-2 text-body-secondary">AGB & Datenschutz</a></li>
+            <li class="nav-item {% block imprint %}{% endblock imprint %}"><a href="{% url 'imprint' %}" class="nav-link px-2 text-body-secondary">Impressum</a></li>
+            <li class="nav-item {% block contact %}{% endblock contact %}"><a href="{% url 'contact' %}" class="nav-link px-2 text-body-secondary">Kontakt</a></li>
           </ul>
         </footer>
     </div>

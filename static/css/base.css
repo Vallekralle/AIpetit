@@ -41,3 +41,7 @@ main {
 .bg-body-tertiary {
     --bs-tertiary-bg-rgb: #9ee37d;
 }
+
+.dropdown-item.active, .dropdown-item:active {
+    --bs-dropdown-link-active-bg: #9ee37d;
+}

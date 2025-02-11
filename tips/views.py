@@ -48,7 +48,6 @@ class CommentPost(SingleObjectMixin, FormView):
     
     def form_valid(self, form):
         form.instance.user = self.request.user
-        #form.instance.tip = self.request.tip_set
         comment = form.save(commit=False)
         comment.tip = self.object
         comment.save()
