@@ -1,11 +1,8 @@
-from django.views.generic import ListView, FormView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import ListView, FormView, DetailView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
-from django.utils import timezone
 from django.urls import reverse
-from django.shortcuts import get_object_or_404
-from django.conf import settings
 
 from .forms import RecipeForm
 from .models import Recipe
@@ -23,9 +20,31 @@ class GenerateRecipeFormView(LoginRequiredMixin, FormView):
         return reverse("generate_recipe")
     
 
-class RecipeListView(ListView):
-    template_name = "recipes/list_recipe.html"
+class RecipeListView(LoginRequiredMixin, ListView):
     model = Recipe
+    template_name = "recipes/list_recipe.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["object_list"] = Recipe.objects.filter(user=self.request.user)
+        return context
+    
+
+class RecipeDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
+    model = Recipe
+    template_name = "recipes/detail_recipe.html"
+
+    def test_func(self):
+        obj = self.get_object()
+        return obj.user == self.request.user
+
+
+class DeleteRecipeView(DeleteView):
+    model = Recipe
+    template_name = "recipes/delete_recipe.html"
+
+    def get_success_url(self):
+        return reverse("my_recipe")
 
 
 def SaveRecipeView(request):

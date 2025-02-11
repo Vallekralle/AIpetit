@@ -8,6 +8,28 @@
 
 {% block content %}
 
+<div class="container mt-5">
+    <h2>{{user.username}}'s Rezepte</h2>
 
+    <p class="fs-5">
+        Hier findest du alle deine gespeicherten Rezepte. 
+        Schau sie dir in Detail an oder lösche Sie, wenn du 
+        sie nicht mehr benötigst.
+    </p>
+
+    {% for recipe in object_list %}
+        <div class="card mb-3">
+            <div class="row g-0">
+            <div class="col-md-12">
+                <div class="card-body">
+                <p class="card-text text-truncate fs-5">{{ recipe.text|safe }}</p>
+                <a class="btn btn-primary me-2" href="{% url 'recipe_detail' recipe.pk %}"><i class="bi bi-eye"></i> Anschauen</a>
+                <a class="btn btn-danger" href="{% url 'delete_recipe' recipe.pk %}"><i class="bi bi-trash"></i> Löschen</a>
+                </div>
+            </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
 
 {% endblock content %}

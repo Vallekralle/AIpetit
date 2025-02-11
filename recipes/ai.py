@@ -1,5 +1,6 @@
 from openai import OpenAI
 from environs import Env
+import re
 
 
 class GeneriereRezept():
@@ -29,7 +30,7 @@ class GeneriereRezept():
             ],
         )
 
-        return response.choices[0].message.content
+        return re.sub(r'\*\*(.+?)\*\*', r'<b>\1</b>', response.choices[0].message.content)
 
 
 # Hier teste ich die GeneriereRezept 

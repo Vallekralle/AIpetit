@@ -45,3 +45,7 @@ main {
 .dropdown-item.active, .dropdown-item:active {
     --bs-dropdown-link-active-bg: #9ee37d;
 }
+
+.card {
+    --bs-card-bg: #d1e7dd !important;
+}
