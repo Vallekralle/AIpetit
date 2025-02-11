@@ -7,9 +7,11 @@
 {% block content %}
 
 <div class="container">
-    <p class="fs-5">
-        {{ recipe.text|safe|linebreaksbr }}
-    </p>
+    <div class="card">
+        <div class="card-body fs-5">
+            {{ recipe.text|safe|linebreaksbr }}
+        </div>
+    </div>
 </div>
 
 {% endblock content %}

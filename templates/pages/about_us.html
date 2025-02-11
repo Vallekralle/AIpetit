@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block css %}{% endblock css %}
 
@@ -8,8 +9,64 @@
 
 {% block content %}
 
-<div class="container">
-    
+<div class="container d-flex flex-grow-1 flex-column justify-content-center">
+    <h1 class="text-center">Unser Team - AIpetit</h1>
+    <div class="row mt-4">
+        <div class="col-md-4 col-12 p-4">
+            <!-- Card 1 -->
+            <div class="card">
+                <div class="ratio ratio-1x1 rounded-circle overflow-hidden">
+                  <img src="{% static 'img/valentin_kunz.png' %}" class="card-img-top img-cover" alt="Profile 1">
+                </div>
+                <div class="card-body text-center">
+                  <h5 class="card-title fs-4"><b>Valentin Kunz</b></h5>
+                  <p class="card-text fs-5">Unser Software-Entwickler hinter AIpetit</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-12 p-4">
+            <!-- Card 2 -->
+            <div class="card">
+                <div class="ratio ratio-1x1 rounded-circle overflow-hidden">
+                <img src="{% static 'img/maria_mustermann.jpg' %}" class="card-img-top img-cover" alt="Profile 1">
+                </div>
+                <div class="card-body text-center">
+                <h5 class="card-title fs-4"><b>Maria Mustermann</b></h5>
+                <p class="card-text fs-5">Unsere Kommunikationsmanagerin</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-12 p-4">
+            <!-- Card 3 -->
+            <div class="card">
+                <div class="ratio ratio-1x1 rounded-circle overflow-hidden">
+                  <img src="{% static 'img/max_mustermann.jpg' %}" class="card-img-top img-cover" alt="Profile 1">
+                </div>
+                <div class="card-body text-center">
+                  <h5 class="card-title fs-4"><b>Max Mustermann</b></h5>
+                  <p class="card-text fs-5">Projektleiter von AIpetit</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <p class="fs-5">
+        Willkommen bei AIpetit – der smarten Kochplattform für kreative Köpfe und hungrige Studenten! Unsere Mission ist es, dir mit künstlicher Intelligenz dabei zu helfen, leckere Rezepte aus den Zutaten zu zaubern, die du bereits zu Hause hast.
+        Aber AIpetit ist mehr als nur eine Rezept-App – hier kannst du deine Einkaufsliste verwalten, praktische Kochtipps mit der Community teilen und dich mit anderen Kochbegeisterten austauschen. Like, kommentiere und entdecke neue Ideen, um deine Küche noch spannender zu gestalten!
+        Ob schnelles Abendessen oder ausgefallene Kreation – mit AIpetit wird Kochen smarter, einfacher und interaktiver. Viel Spaß beim Ausprobieren! 👨‍🍳✨🥗
+    </p>
 </div>
+
+<style>
+    .img-cover{
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .card {
+        --bs-card-bg: transparent !important;
+        --bs-card-border-color: transparent !important;
+    }
+</style>
 
 {% endblock content %}
