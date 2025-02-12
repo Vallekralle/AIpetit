@@ -17,6 +17,10 @@ main {
     flex: 1;
 }
 
+::selection {
+    background: #aaefdf;
+}
+
 .spinner-wrapper {
     background-color: black;
     position: fixed;
