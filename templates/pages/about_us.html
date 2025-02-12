@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block css %}{% endblock css %}
+{% block css %}<link rel="stylesheet" href="{% static 'css/about_us.css' %}">{% endblock css %}
 
 {% block about_us %}active" style="pointer-events: none;" aria-current="page{% endblock about_us %}
 
@@ -10,19 +10,19 @@
 {% block content %}
 
 <div class="container d-flex flex-grow-1 flex-column justify-content-center">
-    <h1 class="text-center">Unser Team - AIpetit</h1>
+  <h1 class="text-center">Unser Team - AIpetit</h1>
     <div class="row mt-4">
-        <div class="col-md-4 col-12 p-4">
-            <!-- Card 1 -->
-            <div class="card">
-                <div class="ratio ratio-1x1 rounded-circle overflow-hidden">
-                  <img src="{% static 'img/valentin_kunz.png' %}" class="card-img-top img-cover" alt="Profile 1">
-                </div>
-                <div class="card-body text-center">
-                  <h5 class="card-title fs-4"><b>Valentin Kunz</b></h5>
-                  <p class="card-text fs-5">Unser Software-Entwickler hinter AIpetit</p>
-                </div>
+      <div class="col-md-4 col-12 p-4">
+        <!-- Card 1 -->
+        <div class="card">
+          <div class="ratio ratio-1x1 rounded-circle overflow-hidden">
+            <img src="{% static 'img/valentin_kunz.png' %}" class="card-img-top img-cover" alt="Profile 1">
+          </div>
+            <div class="card-body text-center">
+              <h5 class="card-title fs-4"><b>Valentin Kunz</b></h5>
+              <p class="card-text fs-5">Unser Software-Entwickler hinter AIpetit</p>
             </div>
+          </div>
         </div>
         <div class="col-md-4 col-12 p-4">
             <!-- Card 2 -->
@@ -55,18 +55,59 @@
         Aber AIpetit ist mehr als nur eine Rezept-App – hier kannst du deine Einkaufsliste verwalten, praktische Kochtipps mit der Community teilen und dich mit anderen Kochbegeisterten austauschen. Like, kommentiere und entdecke neue Ideen, um deine Küche noch spannender zu gestalten!
         Ob schnelles Abendessen oder ausgefallene Kreation – mit AIpetit wird Kochen smarter, einfacher und interaktiver. Viel Spaß beim Ausprobieren! 👨‍🍳✨🥗
     </p>
+
+    <h3 class="mt-5">FAQ - Häufig gestellte Fragen</h3>
+
+  <!-- FAQ-Accordion -->
+  <div class="accordion mt-3" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          <strong>1. Wie funktioniert die KI-Rezeptgenerierung?</strong>
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <strong>Unsere KI analysiert die von dir eingegebenen Zutaten und schlägt dir passende Rezepte vor.</strong>
+          Alternativ kannst du auch nach einem bestimmten Gericht fragen, und die KI liefert dir 
+          eine detaillierte Rezeptanleitung.
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          <strong>2. Kann ich meine Rezepte und Einkaufslisten speichern?</strong>
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <strong>Ja! Du kannst deine Lieblingsrezepte sowie Einkaufslisten speichern</strong> und jederzeit 
+          darauf zugreifen. So hast du immer alles griffbereit, wenn du einkaufen gehst oder 
+          kochen möchtest.
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          <strong>3. Wie kann ich mich mit der Community austauschen?</strong>
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <strong>Du kannst eigene Kochtipps posten, die Beiträge anderer Nutzer liken und kommentieren.</strong> 
+          Außerdem kannst du auch auf Kommentare reagieren und Inspiration für deine nächsten 
+          Gerichte sammeln!
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="fs-5 mt-5">
+    Falls du weitere Fragen hast, kannst du uns jederzeit über das <a href="{% url 'contact' %}">Kontaktformular</a> 
+    erreichen – wir helfen dir gerne weiter!
+  </p>
 </div>
-
-<style>
-    .img-cover{
-        object-fit: cover;
-        object-position: center;
-    }
-
-    .card {
-        --bs-card-bg: transparent !important;
-        --bs-card-border-color: transparent !important;
-    }
-</style>
 
 {% endblock content %}

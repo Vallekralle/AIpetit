@@ -1,0 +1,21 @@
+/* CSS */
+
+.img-cover{
+    object-fit: cover;
+    object-position: center;
+}
+
+.card {
+    --bs-card-bg: transparent !important;
+    --bs-card-border-color: transparent !important;
+}
+
+/* Bootstrap SCSS */
+
+.accordion, .accordion-item {
+    --bs-accordion-bg: #d1e7dd;
+}
+
+.accordion-button {
+    --bs-accordion-btn-bg: #d1e7dd;
+  }

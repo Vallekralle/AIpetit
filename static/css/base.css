@@ -46,6 +46,14 @@ main {
     --bs-dropdown-link-active-bg: #9ee37d;
 }
 
+.dropdown-item:focus, .dropdown-item:hover {
+    --bs-dropdown-link-hover-bg: #a2b3ac;
+}
+
+.dropdown-menu {
+    --bs-body-bg: #d1e7dd;
+}
+
 .card {
     --bs-card-bg: #d1e7dd !important;
 }
