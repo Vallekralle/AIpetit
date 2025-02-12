@@ -57,3 +57,7 @@ main {
 .card {
     --bs-card-bg: #d1e7dd !important;
 }
+
+.form-control {
+    background-color: #d1e7dd !important;
+}
