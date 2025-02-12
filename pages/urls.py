@@ -12,4 +12,5 @@ urlpatterns = [
     path("kontakt/", ContactView.as_view(), name="contact"),
     path("tipps/", include("tips.urls")),
     path("rezepte/", include("recipes.urls")),
+    path("einkaufslisten/", include("shopping_lists.urls")),
 ]

@@ -44,7 +44,9 @@
         <form method="post">
             {% csrf_token %}
             {{ form|crispy }}
-            <button class="btn btn-success"><i class="bi bi-robot"></i> Generieren</button>
+            <button class="btn btn-success" onclick="showSpinner()">
+                <i class="bi bi-robot"></i> Generieren
+            </button>
         </form>
         
     {% endif %}

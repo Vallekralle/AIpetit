@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig',
     'tips.apps.TipsConfig',
     'recipes.apps.RecipesConfig',
+    'shopping_lists.apps.ShoppingListsConfig',
 ]
 
 MIDDLEWARE = [
