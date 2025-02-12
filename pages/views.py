@@ -43,6 +43,6 @@ class ContactView(FormView):
         )
         return self.render_to_response(
             self.get_context_data(
-                form=EmailForm(), output="Email wurde erfolgreich versendet!"
+                form=EmailForm(), output="Ihre Email wurde erfolgreich versendet!"
                 )
             )   

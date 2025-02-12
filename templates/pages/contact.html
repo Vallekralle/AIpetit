@@ -11,7 +11,11 @@
 
 <div class="container mt-5">
     <h2>Kontakt</h2>
-
+    <p class="fs-5 mb-5">
+        Wenn Sie fragen oder ein Anliegen haben können Sie uns gerne über unser Kontaktformular erreichen.
+        Fühlen Sie bitte alle Felder mit echten Daten aus und klicken Sie, wenn Sie fertig sind, auf 
+        senden.
+    </p>
     {% if output %}
         <div class="alert alert-success">
             {{ output }} 🥳
@@ -20,7 +24,7 @@
     <form method="post">
         {% csrf_token %}
         {{ form|crispy }}
-        <button class="btn btn-success" type="submit">Senden</button>
+        <button class="btn btn-success" type="submit"><i class="bi bi-send"></i> Senden</button>
     </form>
 </div>
 

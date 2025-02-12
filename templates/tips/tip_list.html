@@ -24,7 +24,7 @@
                 Gerichte
             </h4>
             <div class="text-center">
-                <a class="btn btn-success" href="{% url 'create_tip' %}">Erstellen <i class="bi bi-plus"></i></a>
+                <a class="btn btn-success" href="{% url 'create_tip' %}"><i class="bi bi-plus-lg"></i> Tipp erstellen</i></a>
             </div>
         </div>
     </div>
@@ -54,10 +54,10 @@
                                 {{ tip.likes.all|length }} Likes &middot; {{ tip.comment_set.all|length }} Kommentare
                             </small>
                         </p>
-                        <a class="btn btn-primary" href="{% url 'detail_tip' tip.id %}">Mehr</a>
+                        <a class="btn btn-primary" href="{% url 'detail_tip' tip.id %}"><i class="bi bi-three-dots"></i> Mehr</a>
                         {% if user == tip.user %}
-                            <a class="btn btn-success" href="{% url 'edit_tip' tip.id %}">Bearbeiten</a>
-                            <a class="btn btn-danger" href="{% url 'delete_tip' tip.id %}">Löschen</a>
+                            <a class="btn btn-success" href="{% url 'edit_tip' tip.id %}"><i class="bi bi-pencil-square"></i> Bearbeiten</a>
+                            <a class="btn btn-danger" href="{% url 'delete_tip' tip.id %}"><i class="bi bi-trash"></i> Löschen</a>
                         {% endif %}
                     </div>
                 </div>
