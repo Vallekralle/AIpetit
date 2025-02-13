@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 
 {% block css %}{% endblock css %}
 
@@ -6,29 +7,87 @@
 
 {% block content %}
 
+<!-- Edit Modal -->
+<div class="modal fade" id="editModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="editModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Understood</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Create BulletPoint Modal -->
+<div class="modal fade" id="createModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="createModalLabel">Neue Notiz hinzufügen</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form action="{% url 'add_bulletpoint' object.pk %}" method="post">
+            {% csrf_token %}
+            <div class="modal-body">
+                {{ form|crispy }}
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" data-bs-dismiss="modal" type="button"><i class="bi bi-x"></i> Schließen</button>
+              <button class="btn btn-success" type="submit"><i class="bi bi-plus-lg"></i> Hinzufügen</button>
+            </div>
+        </form>
+      </div>
+    </div>
+</div>
+
 <div class="container d-flex flex-grow-1 flex-column justify-content-center">
     <h2 class="text-center mb-4">{{ object.title }}</h2>
+
     {% for bullet_point in object.bulletpoint_set.all %}
+
         <div class="alert alert-success">
             <div class="row g-5 fs-5">
                 <div class="col-md-4 col-12 text-center align-content-center">
                     <strong>&middot; {{ bullet_point.text }}</strong>
                 </div>
                 <div class="col-md-4 col-12 text-center align-content-center">
-                    <a class="btn btn-success me-5" href="#"><i class="bi bi-pencil-square"></i></a>
-                    <a class="btn btn-danger" href="#"><i class="bi bi-trash"></i></a>
+                    <form action="{% url 'delete_bulletpoint' object.pk %}" method="post">
+                        {% csrf_token %}
+                        <button class="btn btn-success me-5" type="button" data-bs-toggle="modal" data-bs-target="#editModal">
+                            <i class="bi bi-pencil-square"></i>
+                        </button>
+                        <button class="btn btn-danger" type="submit" name="bullet_point_id" value="{{ bullet_point.id }}"><i class="bi bi-trash"></i></button>
+                    </form>
                 </div>
                 <div class="col-md-4 col-12 text-center align-content-center">
-                    <div class="form-check">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                            Erledigt
-                        </label>
-                    </div>
+                    <form action="{% url 'check_bulletpoint' object.pk %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="bullet_point_id" value="{{ bullet_point.pk }}">
+                        <div class="form-check">
+                            <label class="form-check-label" for="flexCheckChecked">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
+                                {% if bullet_point.marked %}checked{% endif %} onChange="this.form.submit()">
+                                Erledigt
+                            </label>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
+
     {% endfor %}
+    
+    <button class="btn btn-success me-5" type="button" data-bs-toggle="modal" data-bs-target="#createModal">
+        <i class="bi bi-plus-lg"></i> Erstellen
+    </button>
 </div>
 
 {% endblock content %}

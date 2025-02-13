@@ -27,7 +27,11 @@ class BulletPoint(models.Model):
         ShoppingList,
         on_delete=models.CASCADE
     )
-    text = models.TextField(max_length=200)
+    text = models.CharField(
+        max_length=100, 
+        help_text="z.B. Banane, Ananas, Apfel etc.", 
+        verbose_name="Titel für die Notiz"
+    )
     marked = models.BooleanField(default=False)
 
     def __str__(self):
