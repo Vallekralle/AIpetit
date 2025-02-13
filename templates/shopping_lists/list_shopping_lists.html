@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block css %}{% endblock css %}
+
+{% block my_shopping_list %}active" style="pointer-events: none;" aria-current="page{% endblock my_shopping_list %}
+
+{% block title %}AIpetit - Meine Einkauslisten{% endblock title %}
+
+{% block content %}
+
+<div class="container d-flex flex-grow-1 flex-column justify-content-center">
+    <h2 class="text-center mb-4">{{ user.username }}'s Einkaufslisten</h2>
+    {% for shopping_list in object_list %}
+
+        <div class="alert alert-success">
+            <div class="row g-3 fs-5">
+                <div class="col-md-6 col-12 align-content-center text-md-start text-center">
+                    <strong>{{ shopping_list.title }}</strong>
+                </div>
+                <div class="col-md-6 col-12 align-content-center text-md-end text-center">
+                    <a class="btn btn-primary me-2" href="{% url 'detail_shopping_list' shopping_list.pk %}">
+                        <i class="bi bi-three-dots"></i> Mehr
+                    </a>
+                    <a class="btn btn-danger" href="{% url 'delete_shopping_list' shopping_list.pk %}">
+                        <i class="bi bi-trash"></i> Löschen
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    {% empty %}
+
+        <h4 class="text-center">
+            Es gibt noch keine Einkaufslisten, erstelle gerne eine 
+            <a href="{% url 'create_shopping_list' %}">hier</a>
+        </h4>
+
+    {% endfor %}
+</div>
+
+{% endblock content %}

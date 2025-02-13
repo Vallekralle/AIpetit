@@ -61,8 +61,16 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Einkaufsliste</a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item {% block create_shooping_list %}{% endblock create_shooping_list %}" href="#">Erstellen +</a></li>
-                  <li><a class="dropdown-item {% block my_shopping_list %}{% endblock my_shopping_list %}" href="#">Meine Einkaufsliste</a></li>
+                  <li>
+                    <a class="dropdown-item {% block create_shooping_list %}{% endblock create_shooping_list %}" href="{% url 'create_shopping_list' %}">
+                      Erstellen +
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item {% block my_shopping_list %}{% endblock my_shopping_list %}" href="{% url 'list_shopping_lists' %}">
+                      Meine Einkaufsliste
+                    </a>
+                  </li>
                 </ul>
               </li>
               <li class="nav-item">

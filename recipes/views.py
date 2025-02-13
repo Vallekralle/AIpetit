@@ -39,12 +39,16 @@ class RecipeDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
         return obj.user == self.request.user
 
 
-class DeleteRecipeView(DeleteView):
+class DeleteRecipeView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Recipe
     template_name = "recipes/delete_recipe.html"
 
     def get_success_url(self):
         return reverse("my_recipe")
+    
+    def test_func(self):
+        obj = self.get_object()
+        return obj.user == self.request.user
 
 
 def SaveRecipeView(request):

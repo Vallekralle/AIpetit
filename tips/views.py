@@ -54,8 +54,8 @@ class CommentPost(SingleObjectMixin, FormView):
         return super().form_valid(form)
     
     def get_success_url(self):
-        article = self.get_object()
-        return reverse("detail_tip", kwargs={"pk": article.pk})
+        comment = self.get_object()
+        return reverse("detail_tip", kwargs={"pk": comment.pk})
 
 
 class DetailTipView(LoginRequiredMixin, View):
