@@ -35,10 +35,10 @@ class ContactView(FormView):
         """
 
         send_mail(
-            f"{form.cleaned_data["name"]} - Email von AIpetit",
+            f"{form.cleaned_data['name']} - Email von AIpetit",
             content,
             "kunzvalentin4@gmail.com",
-            ["kunzvalentin4@gmail.com"],
+            ['kunzvalentin4@gmail.com'],
             fail_silently=False,
         )
         return self.render_to_response(
