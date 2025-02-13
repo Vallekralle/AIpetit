@@ -32,6 +32,7 @@ DEBUG = os.environ["DEBUG"]
 
 ALLOWED_HOSTS = ["d8l-assiduous-ohm.circumeo-apps.net"]
 
+CSRF_TRUSTED_ORIGINS = ["https://d8l-assiduous-ohm.circumeo-apps.net"]
 
 # Application definition
 
