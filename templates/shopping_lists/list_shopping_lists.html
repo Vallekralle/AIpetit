@@ -15,7 +15,8 @@
         <div class="alert alert-success">
             <div class="row g-3 fs-5">
                 <div class="col-md-6 col-12 align-content-center text-md-start text-center">
-                    <strong>{{ shopping_list.title }}</strong>
+                    <strong>{{ shopping_list.title }}</strong><br>
+                    <small class="text-body-secondary">{{ shopping_list.created_at }}</small>
                 </div>
                 <div class="col-md-6 col-12 align-content-center text-md-end text-center">
                     <a class="btn btn-primary me-2" href="{% url 'detail_shopping_list' shopping_list.pk %}">

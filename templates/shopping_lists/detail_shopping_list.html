@@ -49,7 +49,10 @@
 </div>
 
 <div class="container d-flex flex-grow-1 flex-column justify-content-center">
-    <h2 class="text-center mb-4">{{ object.title }}</h2>
+    <h2 class="text-center mb-4">
+      {{ object.title }} <br>
+      <small class="text-body-secondary fs-6">{{ object.created_at }}</small>
+    </h2>
 
     {% for bullet_point in object.bulletpoint_set.all %}
 
