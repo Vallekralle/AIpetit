@@ -8,22 +8,27 @@
 {% block content %}
 
 <!-- Edit Modal -->
-<div class="modal fade" id="editModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="editModalLabel">Modal title</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
+<div class="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Stichpunkt bearbeiten</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="{% url 'edit_bulletpoint' object.pk %}" method="post">
         <div class="modal-body">
-          ...
+            {% csrf_token %}
+            {{ form|crispy }}
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Understood</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x"></i> Schließen</button>
+          <button type="submit" class="btn btn-success" id="changeBtn" name="bullet_point_id" value="dynamicData">
+            <i class="bi bi-pencil-square"></i> Ändern
+          </button>
         </div>
-      </div>
+      </form>
     </div>
+  </div>
 </div>
 
 <!-- Create BulletPoint Modal -->
@@ -64,8 +69,9 @@
                 <div class="col-md-4 col-12 text-center align-content-center">
                     <form action="{% url 'delete_bulletpoint' object.pk %}" method="post">
                         {% csrf_token %}
-                        <button class="btn btn-success me-5" type="button" data-bs-toggle="modal" data-bs-target="#editModal">
-                            <i class="bi bi-pencil-square"></i>
+                        <button type="button" class="btn btn-success me-5" data-bs-toggle="modal" data-bs-target="#exampleModal" 
+                        data-bs-text="{{ bullet_point.text }}" data-bs-id="{{ bullet_point.id }}">
+                          <i class="bi bi-pencil-square"></i>
                         </button>
                         <button class="btn btn-danger" type="submit" name="bullet_point_id" value="{{ bullet_point.id }}"><i class="bi bi-trash"></i></button>
                     </form>
@@ -88,9 +94,30 @@
 
     {% endfor %}
     
-    <button class="btn btn-success me-5" type="button" data-bs-toggle="modal" data-bs-target="#createModal">
-        <i class="bi bi-plus-lg"></i> Erstellen
+    <button class="btn btn-primary mx-auto" type="button" data-bs-toggle="modal" data-bs-target="#createModal">
+        <i class="bi bi-plus-lg"></i> Hinzufügen
     </button>
 </div>
+
+<script>
+  const exampleModal = document.getElementById('exampleModal')
+  if (exampleModal) {
+    exampleModal.addEventListener('show.bs.modal', event => {
+      // Give button the id as value
+      const button = event.relatedTarget;
+      const changeBtnEl = document.getElementById('changeBtn');
+      const id = button.getAttribute('data-bs-id');
+      changeBtn.value = id;
+
+      const text = button.getAttribute('data-bs-text');
+
+      const modalTitle = exampleModal.querySelector('.modal-title');
+      const modalBodyInput = document.getElementById('id_text');
+
+      modalTitle.textContent = `Stichpunkt bearbeiten`;
+      modalBodyInput.value = text;
+    })
+  }
+</script>
 
 {% endblock content %}

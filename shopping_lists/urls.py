@@ -8,6 +8,7 @@ from .views import (
     DeleteBulletPointView,
     AddBulletPointView,
     CheckBulletPointView,
+    EditBulletPointView
 )
 
 
@@ -19,4 +20,5 @@ urlpatterns = [
     path("bullet_point/hinzufügen/<int:pk>/", AddBulletPointView, name="add_bulletpoint"),
     path("bullet_point/löschen/<int:pk>/", DeleteBulletPointView, name="delete_bulletpoint"),
     path("bullet_point/markieren/<int:pk>/", CheckBulletPointView, name="check_bulletpoint"),
+    path("bullet_point/bearbeiten/<int:pk>/", EditBulletPointView, name="edit_bulletpoint"),
 ]

@@ -80,3 +80,16 @@ def CheckBulletPointView(request, pk):
     bullet_point.save()
 
     return HttpResponseRedirect(reverse("detail_shopping_list", args=[str(pk)]))
+
+
+def EditBulletPointView(request, pk):
+    if request.POST:
+        form = BulletPointForm(request.POST)
+        form.instance.shopping_list = get_object_or_404(ShoppingList, id=pk)
+        
+        if form.is_valid():
+            bullet_point = get_object_or_404(BulletPoint, id=request.POST.get("bullet_point_id"))
+            bullet_point.text = form.cleaned_data["text"]
+            bullet_point.save()
+
+    return HttpResponseRedirect(reverse("detail_shopping_list", args=[str(pk)]))
