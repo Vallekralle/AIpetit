@@ -62,9 +62,7 @@ def DeleteBulletPointView(request, pk):
 
 def AddBulletPointView(request, pk):
     if request.POST:
-        form = BulletPointForm(
-            request.POST
-            )
+        form = BulletPointForm(request.POST)
         form.instance.shopping_list = get_object_or_404(ShoppingList, id=pk)
         if form.is_valid():
             form.save()

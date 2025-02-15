@@ -54,8 +54,10 @@ class DeleteRecipeView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 def SaveRecipeView(request):
     if request.POST:
         form = RecipeForm(request.POST)
+        form.instance.user = request.user
+        
         if form.is_valid():
-            form.instance.user = request.user
             form.save()
+
         return HttpResponseRedirect(reverse("my_recipe"))
     return redirect("generate_recipe")
