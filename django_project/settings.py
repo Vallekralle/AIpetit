@@ -32,7 +32,7 @@ DEBUG = os.environ["DEBUG"]
 
 ALLOWED_HOSTS = ["b7z-assiduous-joule.circumeo-apps.net", "127.0.0.1"]
 
-CSRF_TRUSTED_ORIGINS = ["https://b7z-assiduous-joule.circumeo-apps.net/"]
+CSRF_TRUSTED_ORIGINS = ["https://b7z-assiduous-joule.circumeo-apps.net"]
 
 # Application definition
 
