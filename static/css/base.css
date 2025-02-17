@@ -43,7 +43,7 @@ main {
 /* Bootstrap SCSS */
 
 .bg-body-tertiary {
-    --bs-tertiary-bg-rgb: #9ee37d;
+    background-color: #9ee37d !important;
 }
 
 .dropdown-item.active, .dropdown-item:active {
