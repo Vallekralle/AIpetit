@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}AIpetit - 403{% endblock title %}
+
+{% block content %}
+
+<div class="container d-flex flex-grow-1 flex-column justify-content-center">
+    <h2>Fehler - 403</h2>
+    <p>
+        Du bist leider nicht authentifiziert um diese Aktion auszuführen.
+        Gehe über die Navigationsleiste auf eine andere Seite zurück oder
+        einfach über den Link <a href="{% url 'home' %}">hier</a> zurück
+        zur Homepage.
+    </p>
+</div>
+
+{% endblock content %}

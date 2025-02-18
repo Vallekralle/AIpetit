@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}AIpetit - 400{% endblock title %}
+
+{% block content %}
+
+<div class="container d-flex flex-grow-1 flex-column justify-content-center">
+    <h2>Fehler - 400</h2>
+    <p>
+        Es tut uns Leid, aber leider konnte deine Anfrage nicht vom Server
+        verabeitet werden. Versuche es erneut oder melde dich bei uns, über das
+        <a href="{% url 'contact' %}">Kontaktformular</a>.
+        Gerne kannst du auch <a href="{% url 'home' %}">hier</a> über diesen Link
+        zurück auf die Homepage gelangen.
+    </p>
+</div>
+
+{% endblock content %}

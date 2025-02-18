@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}AIpetit - 500{% endblock title %}
+
+{% block content %}
+
+<div class="container d-flex flex-grow-1 flex-column justify-content-center">
+    <h2>Fehler - 500</h2>
+    <p>
+        Es tut uns Leid, aber leider reagiert unserer Server im Moment
+        auf keine Anfragen. Bitte habe ein bisschen Geduld und versucht
+        es später erneut. Dein AIpetit Team.
+        Oder versucht <a href="{% url 'home' %}">hier</a> mit diesem Link
+        auf die Homepage zurückzukehren.
+    </p>
+</div>
+
+{% endblock content %}
