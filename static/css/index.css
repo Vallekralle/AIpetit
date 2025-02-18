@@ -79,19 +79,19 @@
 
 /* Custom button */
 
-.btn-success {
+.light-green-btn {
     --bs-btn-color: black !important;
     --bs-btn-bg: #bff0a4 !important;
     --bs-btn-border-color: #bff0a4 !important;
 }
 
-.btn-success:hover {
+.light-green-btn:hover {
     --bs-btn-hover-color: black !important;
     --bs-btn-hover-bg: #92d76c !important;
     --bs-btn-hover-border-color: #92d76c !important;
 }
 
-.btn-success:active {
+.light-green-btn:active {
     --bs-btn-active-color: black !important;
     --bs-btn-active-bg: #906ccf !important;
     --bs-btn-active-border-color: #906ccf !important;
