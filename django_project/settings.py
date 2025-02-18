@@ -32,6 +32,7 @@ DEBUG = env.str("DEBUG", default=False)
 ALLOWED_HOSTS = [
     "127.0.0.1",
     ".herokuapp.com",
+    "aipetit-a5a83fed5d66.herokuapp.com",
     "localhost",
     ]
 
