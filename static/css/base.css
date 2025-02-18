@@ -21,6 +21,10 @@ main {
     background: #e2bdee;
 }
 
+h3, h2, h1 {
+    color: #906ccf !important;
+}
+
 .spinner-wrapper {
     background-color: black;
     position: fixed;
@@ -52,7 +56,7 @@ main {
 
 /* Bootstrap SCSS */
 
-.dropdown-item.active, .dropdown-item:active, .dropdown-item:focus {
+.dropdown-item.active, .dropdown-item:active, .dropdown-item.focus, .dropdown-item:focus {
     --bs-dropdown-link-active-bg: #906ccf;
 }
 

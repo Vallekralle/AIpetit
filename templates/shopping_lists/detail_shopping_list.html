@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
+{% load static %}
 
 {% block css %}{% endblock css %}
 
@@ -99,25 +100,6 @@
     </button>
 </div>
 
-<script>
-  const exampleModal = document.getElementById('exampleModal')
-  if (exampleModal) {
-    exampleModal.addEventListener('show.bs.modal', event => {
-      // Give button the id as value
-      const button = event.relatedTarget;
-      const changeBtnEl = document.getElementById('changeBtn');
-      const id = button.getAttribute('data-bs-id');
-      changeBtn.value = id;
-
-      const text = button.getAttribute('data-bs-text');
-
-      const modalTitle = exampleModal.querySelector('.modal-title');
-      const modalBodyInput = document.getElementById('id_text');
-
-      modalTitle.textContent = `Stichpunkt bearbeiten`;
-      modalBodyInput.value = text;
-    })
-  }
-</script>
+<script src="{% static 'js/detail_shopping_list.js' %}"></script>
 
 {% endblock content %}
