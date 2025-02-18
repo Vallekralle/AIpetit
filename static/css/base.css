@@ -10,7 +10,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #9ee37d !important;
+    background-color: #bff0a4 !important;
 }
 
 main {
@@ -18,7 +18,7 @@ main {
 }
 
 ::selection {
-    background: #aaefdf;
+    background: #e2bdee;
 }
 
 .spinner-wrapper {
@@ -40,24 +40,44 @@ main {
     width: 60px;
 }
 
-/* Bootstrap SCSS */
+/* Coolors */
 
-.dropdown-item.active, .dropdown-item:active {
-    --bs-dropdown-link-active-bg: #9ee37d;
+.light-green {
+    color: #bff0a4;
 }
 
-.dropdown-item:focus, .dropdown-item:hover {
-    --bs-dropdown-link-hover-bg: #a2b3ac;
+.dark-purple {
+    color: #906ccf;
+}
+
+/* Bootstrap SCSS */
+
+.dropdown-item.active, .dropdown-item:active, .dropdown-item:focus {
+    --bs-dropdown-link-active-bg: #906ccf;
+}
+
+.dropdown-item:hover {
+    --bs-dropdown-link-hover-bg: #f7665f;
 }
 
 .dropdown-menu {
-    --bs-body-bg: #d1e7dd;
+    --bs-body-bg: #e2bdee;
 }
 
 .card {
-    --bs-card-bg: #d1e7dd !important;
+    --bs-card-bg: #e2bdee !important;
 }
 
 .form-control {
-    background-color: #d1e7dd !important;
+    background-color: #e2bdee !important;
+}
+
+.btn-danger {
+    --bs-btn-bg: #f7665f !important;
+    --bs-btn-border-color: #f7665f !important;
+}
+
+.alert-success {
+    --bs-alert-bg: #e2bdee !important;
+    --bs-alert-border-color: #9273cc !important;
 }

@@ -79,24 +79,20 @@
 
 /* Custom button */
 
-.light-green-btn {
+.btn-success {
     --bs-btn-color: black !important;
-    --bs-btn-bg: #9ee37d !important;
-    --bs-btn-border-color: #9ee37d !important;
+    --bs-btn-bg: #bff0a4 !important;
+    --bs-btn-border-color: #bff0a4 !important;
 }
 
-.light-green-btn:hover {
+.btn-success:hover {
     --bs-btn-hover-color: black !important;
-    --bs-btn-hover-bg: #7ab060 !important;
-    --bs-btn-hover-border-color: #7ab060 !important;
+    --bs-btn-hover-bg: #92d76c !important;
+    --bs-btn-hover-border-color: #92d76c !important;
 }
 
-.light-green-btn:active {
+.btn-success:active {
     --bs-btn-active-color: black !important;
-    --bs-btn-active-bg: #689652 !important;
-    --bs-btn-active-border-color: #689652 !important;
-}
-
-.light-green {
-    color: #9ee37d;
+    --bs-btn-active-bg: #906ccf !important;
+    --bs-btn-active-border-color: #906ccf !important;
 }

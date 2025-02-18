@@ -13,9 +13,9 @@
 /* Bootstrap SCSS */
 
 .accordion, .accordion-item {
-    --bs-accordion-bg: #d1e7dd;
+    --bs-accordion-bg: #e2bdee;
 }
 
 .accordion-button {
-    --bs-accordion-btn-bg: #d1e7dd;
+    --bs-accordion-btn-bg: #e2bdee;
   }
