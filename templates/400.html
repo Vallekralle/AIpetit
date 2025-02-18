@@ -4,13 +4,13 @@
 
 {% block content %}
 
-<div class="container d-flex flex-grow-1 flex-column justify-content-center">
-    <h2>Fehler - 400</h2>
-    <p>
+<div class="container d-flex flex-grow-1 flex-column justify-content-center text-center">
+    <h2><b>Fehler - 400</b></h2>
+    <p class="fs-5">
         Es tut uns Leid, aber leider konnte deine Anfrage nicht vom Server
         verabeitet werden. Versuche es erneut oder melde dich bei uns, über das
         <a href="{% url 'contact' %}">Kontaktformular</a>.
-        Gerne kannst du auch <a href="{% url 'home' %}">hier</a> über diesen Link
+        Gerne kannst du auch <a href="{% url 'index' %}">hier</a> über diesen Link
         zurück auf die Homepage gelangen.
     </p>
 </div>

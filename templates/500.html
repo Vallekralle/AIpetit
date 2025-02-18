@@ -4,13 +4,13 @@
 
 {% block content %}
 
-<div class="container d-flex flex-grow-1 flex-column justify-content-center">
-    <h2>Fehler - 500</h2>
-    <p>
+<div class="container d-flex flex-grow-1 flex-column justify-content-center text-center">
+    <h2><b>Fehler - 500</b></h2>
+    <p class="fs-5">
         Es tut uns Leid, aber leider reagiert unserer Server im Moment
         auf keine Anfragen. Bitte habe ein bisschen Geduld und versucht
         es später erneut. Dein AIpetit Team.
-        Oder versucht <a href="{% url 'home' %}">hier</a> mit diesem Link
+        Oder versucht <a href="{% url 'index' %}">hier</a> mit diesem Link
         auf die Homepage zurückzukehren.
     </p>
 </div>
