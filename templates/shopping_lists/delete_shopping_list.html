@@ -10,7 +10,8 @@
 <div class="container d-flex flex-grow-1 flex-column justify-content-center text-center">
     <h2>Einkaufsliste löschen</h2>
     <p class="fs-4">
-        Bist du dir sicher, dass du die Einkaufsliste "<strong>{{ object.title }}</strong>" löschen willst?
+        Bist du dir sicher, dass du die Einkaufsliste 
+        "<strong>{{ object.title }}</strong>" löschen willst?
     </p>
     <form method="post">
         {% csrf_token %}
