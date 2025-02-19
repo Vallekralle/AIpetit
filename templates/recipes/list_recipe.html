@@ -9,29 +9,40 @@
 {% block content %}
 
 <div class="container d-flex flex-grow-1 flex-column justify-content-center">
-    <div class="text-center">
-        <h2>{{user.username}}'s Rezepte</h2>
+        <div class="text-center">
+            <h2>{{user.username}}'s Rezepte</h2>
 
-        <p class="fs-5">
-            Hier findest du alle deine gespeicherten Rezepte. 
-            Schau sie dir im Detail an oder lösche die Rezepte, wenn du 
-            sie nicht mehr benötigst.
-        </p>
-    </div>
+    {% if object_list %}
 
-    {% for recipe in object_list %}
-        <div class="card mb-3">
-            <div class="row g-0">
-            <div class="col-md-12">
-                <div class="card-body">
-                <p class="card-text text-truncate fs-5">{{ recipe.text|safe }}</p>
-                <a class="btn btn-primary me-2" href="{% url 'recipe_detail' recipe.pk %}"><i class="bi bi-eye"></i> Anschauen</a>
-                <a class="btn btn-danger" href="{% url 'delete_recipe' recipe.pk %}"><i class="bi bi-trash"></i> Löschen</a>
+            <p class="fs-5">
+                Hier findest du alle deine gespeicherten Rezepte. 
+                Schau sie dir im Detail an oder lösche die Rezepte, wenn du 
+                sie nicht mehr benötigst.
+            </p>
+        </div>
+
+        {% for recipe in object_list %}
+            <div class="card mb-3">
+                <div class="row g-0">
+                <div class="col-md-12">
+                    <div class="card-body">
+                    <p class="card-text text-truncate fs-5">{{ recipe.text|safe }}</p>
+                    <a class="btn btn-primary me-2" href="{% url 'recipe_detail' recipe.pk %}"><i class="bi bi-eye"></i> Anschauen</a>
+                    <a class="btn btn-danger" href="{% url 'delete_recipe' recipe.pk %}"><i class="bi bi-trash"></i> Löschen</a>
+                    </div>
+                </div>
                 </div>
             </div>
-            </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
+    
+    {% else %}
+
+       <p class="fs-5">
+            Du hast noch keine Rezepte generieren lassen. Wenn du ein Rezept generieren möchtest
+            kannst du das gerne <a href="{% url 'generate_recipe' %}">hier</a> tun.
+       </p>     
+    
+    {% endif %}
 </div>
 
 {% endblock content %}
